@@ -1,0 +1,60 @@
+<ul class=" clocks">
+
+<div class="row">
+    
+    <div class="col-md-6 col-md-offset-3">
+       
+       <h3> space</h3>
+        <h1>~ ~ CL<i class="fa fa-clock-o" aria-hidden="true"></i>CK+ ~ ~</h1>
+        <h2> Clock+ by Thomas Testa - Matts Monday 4.30 Tute</h2>
+        <h2> s3785277@student.rmit.edu - PASS LEVEL</h2>
+            
+
+    </div>
+
+    <div class="col-md-6 col-md-offset-3">
+        <% @clocks.each do |clock|%>
+            <li>
+                <h4><%= clock.country %></h4>
+                <h3><%= clock.timediftwo  %><%= "h"%> </h3>
+                <h5><%= Time.now.getlocal(clock.timedif).strftime("%H:%M") %> </h5>
+
+                <h6>
+                <% if Time.now.getlocal(clock.timedif).between?('09:00' + 'UTC' + clock.timedif, '18:00' + 'UTC' + clock.timedif) %>
+                    Business Hours <i class="fa fa-calendar" aria-hidden="true"></i>
+
+                <% elsif Time.now.getlocal(clock.timedif).between?('18:00' + 'UTC' + clock.timedif, '20:00' + 'UTC' + clock.timedif) %>
+                    Business Overtime <i class="fa fa-building-o" aria-hidden="true"></i>
+
+                <% elsif Time.now.getlocal(clock.timedif).between?('08:00' + 'UTC' + clock.timedif, '09:00' + 'UTC' + clock.timedif) %>
+                    Personal Time <i class="fa fa-glass" aria-hidden="true"></i>
+
+                <% elsif Time.now.getlocal(clock.timedif).between?('20:00' + 'UTC' + clock.timedif, '23:00' + 'UTC' + clock.timedif) %>
+                    Personal Time <i class="fa fa-glass" aria-hidden="true"></i>
+
+                <% else %>
+                    Sleeping Time <i class="fa fa-moon-o" aria-hidden="true"></i>
+                <% end %>
+                </h6>
+
+            </li>
+        <% end %>
+    </div>
+
+    <div class="col-md-3">
+       
+       <h4><%= "~~~~~~"%> </h4>
+       <h3><%= "Business Hours"%> <i class="fa fa-calendar" aria-hidden="true"></i></h3>
+       <h3><%= "Business OverTime"%> <i class="fa fa-building-o" aria-hidden="true"></i></h3>
+       <h3><%= "Personal Time"%> <i class="fa fa-glass" aria-hidden="true"></i></h3> 
+       <h3><%= "Sleepy Time"%> <i class="fa fa-moon-o" aria-hidden="true"></i></h3>
+       <h4><%= "~~~~~~"%> </h4>
+
+    </div>
+</div>
+
+
+
+
+     </ul>
+
